@@ -6,7 +6,6 @@ export default function ShareButtonTest() {
     <>
       <ShareButton 
         title='test title'
-        text='test text!!'
       />
     </>
   )
