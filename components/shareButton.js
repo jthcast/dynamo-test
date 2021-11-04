@@ -28,7 +28,7 @@ export default function ShareButton({
   }
 
   const copyUrlToClipboard = async () => {
-    await navigator.clipboard.writeText(url)
+    await navigator.clipboard.writeText(url || defaultUrl)
     alert('URL 복사되었습니다.')
   }
 
