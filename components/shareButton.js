@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { isMobile } from "../utils"
 
 // navigator.share와 navigator.clipboard는 HTTPS 또는 localhost 환경에서만 지원
@@ -6,7 +7,11 @@ export default function ShareButton({
   text,
   url = document.location.href
 }){
-  const isMobileDevice = isMobile()
+  const [isMobileDevice, setIsMobileDevice] = useState()
+
+  useEffect(() => {
+    setIsMobileDevice(isMobile())
+  }, [])
 
   const mobileShare = async () => {
     const shareData = {
