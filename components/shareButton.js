@@ -5,19 +5,23 @@ import { isMobile } from "../utils"
 export default function ShareButton({
   title,
   text,
-  url = document.location.href
+  url
 }){
   const [isMobileDevice, setIsMobileDevice] = useState()
+  const [defaultUrl, setDefaultUrl] = useState()
 
   useEffect(() => {
     setIsMobileDevice(isMobile())
+    if(!url){
+      setDefaultUrl(document.location.href)
+    }
   }, [])
 
   const mobileShare = async () => {
     const shareData = {
       title,
       text,
-      url
+      url: url || defaultUrl
     }
 
     await navigator.share(shareData)
